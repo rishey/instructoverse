@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131009220920) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "courses", force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -29,8 +32,8 @@ ActiveRecord::Schema.define(version: 20131009220920) do
     t.datetime "updated_at"
   end
 
-  add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id"
-  add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id"
+  add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id", using: :btree
+  add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"
