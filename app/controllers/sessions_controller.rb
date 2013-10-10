@@ -6,12 +6,13 @@ class SessionsController < ApplicationController
   def create
     if params[:signup]
 
-      if params[:password_confirmation] != params[:signup][:password]
+      user = User.new(params[:signup])
+
+      if user.save
+        redirect_to :root
+      else
         @error_signup = "Passwords do not match"
         render :new
-      else
-        user = User.create(params[:signup])
-        redirect_to :root
       end
 
     else
@@ -33,4 +34,7 @@ class SessionsController < ApplicationController
 
     redirect_to login_path
   end
+
+
+  
 end
