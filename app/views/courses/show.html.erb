@@ -6,6 +6,15 @@
 <p>Description:  <%= @course.description %></p>
 
 
+Session id:
+<%= session[:user_id] %>
+<br>
+User id:
+<%= current_user.id %>
+<br>
+Course creator id:
+<%= @course.creator_id %>
+<br>
 
 <!-- NOTE: All users must be logged in to view this page -->
 <!-- IF CREATOR: show Edit/Delete this course buttons -->
@@ -17,9 +26,11 @@
 <% else %>
 <!-- IF ATTENDEE Favorite/Unfavorite this course buttons -->
    <!-- if user is not the course creator, show favorite unfavorite -->
-<%= link_to "Enroll" %>
-<%= link_to "Unenroll" %>
-
+    <% if @user.attended_courses.include?(@course) %>
+      <%= link_to "Unfavorite", "/unfavorite/#{@course.id}", method: :POST %>
+    <% else %>  
+      <%= link_to "Favorite", "/favorite/#{@course.id}", method: :POST %>
+    <% end %>
 <% end %>
 
 </div>

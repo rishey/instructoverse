@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   def index
     @courses = Course.all
+    @user = current_user
   end
 
   def create
@@ -19,8 +20,8 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @user = User.find(session[:user_id]) #session[:id]
-    if @user = @course.creator_id
+    @user = current_user
+    if @user.id == @course.creator_id
       @creator = @user
     end
   end
@@ -42,10 +43,10 @@ class CoursesController < ApplicationController
     user = User.find(session[:user_id])
     course = Course.find(params[:id])
     if user.attended_courses.include?(course)
-      redirect "/users/<%= user.id %>"
+      redirect_to "/users/#{user.id}"
     else
       user.attended_courses << course
-      redirect "/users/<%= user.id %>"      
+      redirect_to "/users/#{user.id}"     
     end
   end
 
@@ -54,9 +55,9 @@ class CoursesController < ApplicationController
     course = Course.find(params[:id])
     if user.attended_courses.include?(course)
       user.attended_courses.delete(course)
-      redirect "/users/<%= user.id %>"  
+      redirect_to "/users/#{user.id}"  
     else
-      redirect "/users/<%= user.id %>"
+      redirect_to "/users/#{user.id}"
     end
   end
 
