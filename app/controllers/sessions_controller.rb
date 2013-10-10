@@ -4,16 +4,28 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+    if params[:signup]
 
-      redirect_to :root
+      if params[:password_confirmation] != params[:signup][:password]
+        @error_signup = "Passwords do not match"
+        render :new
+      else
+        user = User.create(params[:signup])
+        redirect_to :root
+      end
+
     else
-      @error = "Incorrect email or password"
+      user = User.find_by(email: params[:email])
 
-      render :new
+      if user && user.authenticate(params[:password])
+        session[:user_id] = user.id
+        redirect_to :root
+      else
+        @error = "Incorrect email or password"
+        render :new
+      end
     end
+
   end
 
   def destroy

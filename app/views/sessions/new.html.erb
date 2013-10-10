@@ -1,19 +1,38 @@
-<h1>Login</h1>
+<% if current_user %>
+  <p>You're already logged in!</p>
+<% else %>
+
+<h2>Login</h2>
+
 <% if @error %>
   <p><%= @error %></p>
 <% end %>
 
-<% if current_user %>
-  <p>You're already logged in!</p>
-<% else %>
   <%= form_tag login_path, :id => "login" do %>
-    <%= label_tag "Email", :email %>
-    <%= text_field_tag :email %>
+    <%= label_tag "email", "Email" %>
+    <%= text_field_tag :email %> <br>
 
-    <%= label_tag "Password", :password %>
-    <%= password_field_tag :password %>
+    <%= label_tag "password", "Password" %>
+    <%= password_field_tag :password %> <br>
 
     <%= submit_tag "Login" %>
 
   <% end %>
 <% end %>
+<p></p>
+<h2>Signup</h2>
+  <%= form_tag login_path, :id => "login" do %>
+    <%= label_tag "username", "Username" %>
+    <%= text_field_tag "signup[username]" %> <br>
+
+    <%= label_tag "email", "Email" %>
+    <%= text_field_tag "signup[email]" %> <br>
+
+    <%= label_tag 'password', "Password" %>
+    <%= password_field_tag "signup[password]" %> <br>
+
+    <%= label_tag "password_confirmation", "Password Confirmation" %>
+    <%= password_field_tag "signup[password_confirmation]" %> <br>
+
+    <%= submit_tag "Signup" %>
+  <% end %>
