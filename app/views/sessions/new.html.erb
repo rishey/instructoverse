@@ -4,7 +4,7 @@
 
 <h2>Login</h2>
 
-<% @error if @error%>
+<p class="error"><%= @error if @error%></p>
 
   <%= form_tag login_path, :id => "login" do %>
     <%= label_tag "email", "Email" %>
@@ -39,7 +39,7 @@
 <% if @signup_errors %>
   <ul>
   <% @signup_errors.each do |error| %>
-    <li><%= error %></li>
+    <li class="error"><%= error %></li>
   <% end %>
   </ul>
 <% end %>

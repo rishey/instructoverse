@@ -12,10 +12,10 @@
       <% if current_user %>
       <li> <%= link_to "Logout", logout_path, :method => "delete" %></li>   
       <li> <%= link_to "My Profile", user_path(current_user) %> </li>
-      <li> <%= link_to "All courses", courses_path %> </li>
       <% else %> 
       <li> <%= link_to "Login or Signup", login_path %> </li>
       <% end %>
+      <li> <%= link_to "All courses", courses_path %> </li>
     </ul>
   </nav>
 
