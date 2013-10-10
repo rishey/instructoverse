@@ -20,9 +20,12 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @user = current_user
-    if @user.id == @course.creator_id
-      @creator = @user
+    if current_user
+      @user = current_user
+      @creator = @user if @user.id == @course.creator_id
+    else
+      @error = "You must be logged in to view courses"
+      render 'sessions/new'
     end
   end
 
