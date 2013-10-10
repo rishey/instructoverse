@@ -2,14 +2,24 @@
 
 <div>
 <p>Title: <%= @course.title %></p>
-<p>URL:<a href="<%= @course.url %>"><%= @course.url %></a></p>
+<p>URL: <a href="<%= @course.url %>" target="_blank"><%= @course.url %></a></p>
 <p>Description:  <%= @course.description %></p>
+
 
 
 <!-- NOTE: All users must be logged in to view this page -->
 <!-- IF CREATOR: show Edit/Delete this course buttons -->
    <!-- if user is the course creator, then show the edit delete button -->
+<% if @creator %>   
+<%= link_to "Edit", edit_course_path %>
+<%= link_to "Delete", course_path(@course), method: :delete, data: { confirm: 'Are you sure?' } %>
 
+<% else %>
 <!-- IF ATTENDEE Favorite/Unfavorite this course buttons -->
    <!-- if user is not the course creator, show favorite unfavorite -->
+<%= link_to "Enroll" %>
+<%= link_to "Unenroll" %>
+
+<% end %>
+
 </div>

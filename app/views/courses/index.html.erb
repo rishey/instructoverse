@@ -6,7 +6,7 @@
   </thead>
   <tbody>
     <% @courses.each do |course| %>
-     <tr><a href=""<%= course.title %>></a></tr>
+     <tr><td><a href="/courses/<%= course.id %> "><%= course.title %></a></td></tr>
     <% end %>
   </tbody>
 </table>
