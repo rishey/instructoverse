@@ -5,7 +5,11 @@
 <p>URL: <a href="<%= @course.url %>" target="_blank"><%= @course.url %></a></p>
 <p>Description:  <%= @course.description %></p>
 
+User id:
+<%= @user.id %>
 
+Course creator id:
+<%= @course.creator_id %>
 
 <!-- NOTE: All users must be logged in to view this page -->
 <!-- IF CREATOR: show Edit/Delete this course buttons -->
@@ -17,9 +21,11 @@
 <% else %>
 <!-- IF ATTENDEE Favorite/Unfavorite this course buttons -->
    <!-- if user is not the course creator, show favorite unfavorite -->
-<%= link_to "Enroll" %>
-<%= link_to "Unenroll" %>
-
+    <% if @user.attended_courses.include?(@course) %>
+      <%= link_to "Unfavorite", "/unfavorite/#{@course.id}", method: :POST %>
+    <% else %>  
+      <%= link_to "Favorite", "/favorite/#{@course.id}", method: :POST %>
+    <% end %>
 <% end %>
 
 </div>
