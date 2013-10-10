@@ -20,8 +20,8 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @user = User.find(session[:user_id]) #session[:id]
-    if @user = @course.creator_id
+    @user = current_user
+    if @user.id == @course.creator_id
       @creator = @user
     end
   end

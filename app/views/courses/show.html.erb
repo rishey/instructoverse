@@ -5,11 +5,16 @@
 <p>URL: <a href="<%= @course.url %>" target="_blank"><%= @course.url %></a></p>
 <p>Description:  <%= @course.description %></p>
 
-User id:
-<%= @user.id %>
 
+Session id:
+<%= session[:user_id] %>
+<br>
+User id:
+<%= current_user.id %>
+<br>
 Course creator id:
 <%= @course.creator_id %>
+<br>
 
 <!-- NOTE: All users must be logged in to view this page -->
 <!-- IF CREATOR: show Edit/Delete this course buttons -->
