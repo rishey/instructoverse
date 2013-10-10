@@ -1,0 +1,12 @@
+<h1>Available Courses</h1>
+
+<table>
+  <thead>
+    <th>Course Title</th>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+     <tr><td><a href="/courses/<%= course.id %> "><%= course.title %></a></td></tr>
+    <% end %>
+  </tbody>
+</table>
