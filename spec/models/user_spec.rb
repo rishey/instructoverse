@@ -14,12 +14,12 @@ describe User do
   end
 
   it "should allow a course to be added to created_courses" do
-    @user.created_courses << Course.create(title: "df", description: "df", url: "df")
+    @user.created_courses << Course.create(title: "df", description: "df", url: "http://www.google.com")
     expect(@user.created_courses.count).to eq(1)
   end
 
   it "should allow a course to be added to attended_courses" do
-    @user.attended_courses << Course.create(title: 'sdfsdf', description: "adssd", url: "asdasd")
+    @user.attended_courses << Course.create(title: 'sdfsdf', description: "adssd", url: "http://www.google.com")
     expect(@user.attended_courses.count). to eq(1)
   end
 

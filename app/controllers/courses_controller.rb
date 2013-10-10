@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
 
   def create
     @user = current_user
-    @course = @user.created_courses.create(params[:course].permit(:title, :url, :description))
+    @course = @user.created_courses.new(params[:course].permit(:title, :url, :description))
     if @course.save
       redirect_to @user
     else
@@ -20,8 +20,8 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @user = User.find(params[:user_id])
-    if @user.id = @course.creator_id
+    @user = User.find(session[:user_id]) #session[:id]
+    if @user = @course.creator_id
       @creator = @user
     end
   end
@@ -63,10 +63,11 @@ class CoursesController < ApplicationController
 
 
   def destroy
+    @user = User.find(session[:user_id])
     @course = Course.find(params[:id])
     @course.destroy
     # Change this to user profile
-    redirect_to courses_path
+    redirect_to user_path
   end 
 
   private
