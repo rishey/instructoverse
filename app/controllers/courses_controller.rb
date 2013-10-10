@@ -1,13 +1,14 @@
-
 class CoursesController < ApplicationController
   def index
     @courses = Course.all
+    @user = current_user
   end
 
   def create
-    @course = Course.new(params[:course].permit(:title, :url, :description))
+    @user = current_user
+    @course = @user.created_courses.create(params[:course].permit(:title, :url, :description))
     if @course.save
-      redirect_to @course
+      redirect_to @user
     else
       render 'new'
     end
@@ -19,7 +20,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @user = current_user
+    @user = User.find(params[:user_id])
     if @user.id = @course.creator_id
       @creator = @user
     end
