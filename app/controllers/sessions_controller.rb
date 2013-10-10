@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def new
-
   end
 
   # sign in
@@ -9,7 +8,6 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      # redirect_to :root
       redirect_to @user
     else
       @error = "Incorrect email or password"
