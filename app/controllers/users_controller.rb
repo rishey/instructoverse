@@ -5,11 +5,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    if params[:id].to_i != current_user.id
-      @error = "You can view your profile only."
-      render 'homes/index'
+    if current_user
+      if params[:id].to_i != current_user.id
+        @error = "You can view your profile only."
+        render 'homes/index'
+      end
+    else
+      @error = "You need to be logged in to view your profile"
+      render 'sessions/new'
     end
-  end 
+  end
 
   # sign up 
   def create
