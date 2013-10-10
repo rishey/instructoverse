@@ -5,9 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if params[:id].to_i == session[:user_id].to_i
-      @user = User.find(params[:id])
-    else
+    if params[:id].to_i != current_user.id
       @error = "You can view your profile only."
       render 'homes/index'
     end
