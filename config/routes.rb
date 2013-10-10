@@ -1,11 +1,15 @@
 Instructoverse::Application.routes.draw do
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"
+  # get "/logout" => "sessions#destroy"
   delete "/logout" => "sessions#destroy"
+
 
   post "/courses/:id" => "courses#favorite"
   post "/courses/:id" => "courses#unfavorite"
   resources :courses
+
+  resources :users 
 
   root to: "homes#index"
 end
