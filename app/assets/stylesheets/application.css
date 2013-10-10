@@ -11,3 +11,32 @@
  *= require_self
  *= require_tree .
  */
+
+h1 {
+  color: #588995;
+} 
+
+body {
+/*  background-color: #CBFDFE;*/ /*light blue
+     color: #426E6F;
+ /* @import url(http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic);  
+  font-family: 'Libre Baskerville', serif;
+*/  
+  background-color: #FFF8E7; /**cream*/
+  font-family: Futura;
+  color: #5E5E5E; 
+}
+
+#errorExplanation {
+  width: 50%;
+  padding-top: 1px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin:10px;
+  background-color: white;
+  border-radius: 15px;
+  color: #E2492F;
+  text-shadow: 0 0 3.4em #fff;
+  text-shadow: 0 0 1.5em #fff, 0 0 1.5em #fff;
+}
