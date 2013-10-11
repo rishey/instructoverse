@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
-  # def index
-  #   redirect_to :root
-  # end
+  def index
+    redirect_to :root
+  end
 
   # def show
   #   if current_user

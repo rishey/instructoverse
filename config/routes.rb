@@ -3,6 +3,7 @@ Instructoverse::Application.routes.draw do
   post "/login" => "sessions#create"
   # get "/logout" => "sessions#destroy"
   delete "/logout" => "sessions#destroy"
+  get '/logout', to: 'sessions#destroy'
   post "/favorite/:id" => "courses#favorite"
   post "/unfavorite/:id" => "courses#unfavorite"
   resources :courses
