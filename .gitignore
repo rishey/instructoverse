@@ -15,5 +15,3 @@
 /log/*.log
 /tmp
 
-#ignore fb omniauth keys
-/config/initializers/omniauth.rb
