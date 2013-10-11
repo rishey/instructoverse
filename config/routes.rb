@@ -3,13 +3,14 @@ Instructoverse::Application.routes.draw do
   post "/login" => "sessions#create"
   # get "/logout" => "sessions#destroy"
   delete "/logout" => "sessions#destroy"
-
   post "/favorite/:id" => "courses#favorite"
   post "/unfavorite/:id" => "courses#unfavorite"
   resources :courses
-
   resources :users 
-
+####for fb oauth:
+  match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  match 'auth/failure', to: redirect('/'), via: [:get, :post]
+##### end oauth   
   root to: "courses#index"
 end
 
