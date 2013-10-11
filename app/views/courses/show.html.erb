@@ -2,8 +2,8 @@
 
 <div>
 <p>Title: <%= @course.title %></p>
-<p>URL: <a href="<%= @course.url %>" target="_blank"><%= @course.url %></a></p>
 <p>Description:  <%= @course.description %></p>
+<p>URL: <a href="<%= @course.url %>" target="_blank"><%= @course.url %></a></p>
 
 <!-- NOTE: All users must be logged in to view this page -->
 <!-- IF CREATOR: show Edit/Delete this course buttons -->
@@ -23,3 +23,6 @@
 <% end %>
 
 </div>
+
+
+<iframe width="560" height="315" src="<%= @course.url %>" frameborder="0" allowfullscreen></iframe>
