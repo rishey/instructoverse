@@ -1,0 +1,34 @@
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(141, 202, 236);
+  width: 100%;
+  color: white;
+  display: inline-block;
+}
+
+.top-nav h1 {
+  margin:0;
+  float: left;
+  display: inline;
+}
+
+ul {
+  text-align: center;
+  margin:10px;
+  display: inline-block;
+  list-style: none;
+  float:right;
+}
+
+li, a {
+  display: inline;
+  padding-right: 15px;
+  text-decoration: none;
+}
+
+
+.container {
+  margin-top: 100px;
+}
